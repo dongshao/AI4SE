@@ -1,0 +1,306 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>AI4SE 课程资料</title>
+  <meta name="description" content="AI for Software Engineering · 南京大学软件学院 课程资料索引">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@400;500;700;900&family=Playfair+Display:ital,wght@0,400;0,700;1,400;1,700&family=JetBrains+Mono:wght@400;700&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --nju-bronze:       #BD934E;
+      --nju-bronze-deep:  #9A7337;
+      --nju-bronze-light: #D4B57A;
+      --nju-bronze-pale:  #F5EDDD;
+
+      --ink:        #0F1423;
+      --ink-soft:   #2A3040;
+      --ink-muted:  #5A6070;
+      --rule:       #D8D4CB;
+      --paper:      #F8F5EE;
+      --paper-alt:  #EFE9DC;
+      --white:      #FFFFFF;
+
+      --font-sans-zh: "Noto Sans SC", "PingFang SC", "Microsoft YaHei", sans-serif;
+      --font-sans-en: "Arial", "Helvetica Neue", Helvetica, sans-serif;
+      --font-display: "Playfair Display", "Times New Roman", serif;
+      --font-mono:    "JetBrains Mono", "Menlo", monospace;
+    }
+
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body {
+      margin: 0;
+      background: var(--paper);
+      color: var(--ink);
+      font-family: var(--font-sans-zh);
+      font-size: 16px;
+      line-height: 1.75;
+      -webkit-font-smoothing: antialiased;
+    }
+    a { color: inherit; text-decoration: none; }
+
+    .wrap { max-width: 1120px; margin: 0 auto; padding: 0 32px; }
+
+    .eyebrow {
+      font-family: var(--font-sans-en);
+      font-weight: 700;
+      font-size: 13px;
+      letter-spacing: 0.36em;
+      text-transform: uppercase;
+      color: var(--nju-bronze);
+    }
+    .bronze-bar { height: 4px; width: 120px; background: var(--nju-bronze); margin: 28px 0 22px; }
+
+    /* ---------- Masthead ---------- */
+    .masthead {
+      position: relative;
+      margin: 48px 0 0;
+      padding: clamp(40px, 6vw, 80px) clamp(28px, 5vw, 72px);
+      border: 1px solid var(--rule);
+      background: var(--white);
+      overflow: hidden;
+    }
+    .masthead .corner {
+      position: absolute; width: 28px; height: 28px;
+      border: 2px solid var(--nju-bronze);
+    }
+    .masthead .tl { top: 12px; left: 12px; border-right: none; border-bottom: none; }
+    .masthead .tr { top: 12px; right: 12px; border-left: none; border-bottom: none; }
+    .masthead .bl { bottom: 12px; left: 12px; border-right: none; border-top: none; }
+    .masthead .br { bottom: 12px; right: 12px; border-left: none; border-top: none; }
+
+    .masthead .bgword {
+      position: absolute;
+      right: -0.04em; bottom: -0.22em;
+      font-family: var(--font-display);
+      font-weight: 700;
+      font-size: clamp(120px, 24vw, 320px);
+      line-height: 1;
+      color: transparent;
+      -webkit-text-stroke: 1.5px var(--nju-bronze-light);
+      opacity: 0.55;
+      pointer-events: none;
+      user-select: none;
+    }
+    .masthead .content { position: relative; z-index: 1; max-width: 680px; }
+    .masthead h1 {
+      margin: 20px 0 0;
+      font-weight: 900;
+      font-size: clamp(40px, 6vw, 76px);
+      line-height: 1.12;
+      letter-spacing: 0.02em;
+    }
+    .masthead .sub {
+      font-family: var(--font-display);
+      font-style: italic;
+      font-size: clamp(20px, 2.2vw, 28px);
+      color: var(--ink-muted);
+      line-height: 1.4;
+    }
+    .masthead .lead {
+      margin: 18px 0 0;
+      font-size: 17px;
+      color: var(--ink-soft);
+    }
+    .masthead .meta {
+      display: flex; flex-wrap: wrap; gap: 8px 36px;
+      margin-top: 36px; padding-top: 20px;
+      border-top: 1px solid var(--rule);
+    }
+    .masthead .meta .k {
+      font-family: var(--font-sans-en); font-weight: 700;
+      font-size: 11px; letter-spacing: 0.28em; text-transform: uppercase;
+      color: var(--ink-muted);
+    }
+    .masthead .meta .v { font-size: 15px; font-weight: 500; }
+
+    /* ---------- Section head ---------- */
+    .sec-head {
+      display: flex; align-items: flex-end; justify-content: space-between;
+      gap: 24px;
+      margin: 72px 0 8px;
+      padding-bottom: 18px;
+      border-bottom: 2px solid var(--ink);
+    }
+    .sec-head h2 { margin: 6px 0 0; font-weight: 900; font-size: clamp(28px, 3.2vw, 40px); line-height: 1.2; }
+    .sec-head .en {
+      font-family: var(--font-display); font-style: italic;
+      font-size: 18px; color: var(--ink-muted);
+    }
+    .sec-head .count {
+      font-family: var(--font-display); font-weight: 700;
+      font-size: 44px; line-height: 1; color: var(--nju-bronze);
+    }
+
+    /* ---------- Material list ---------- */
+    .list { counter-reset: item; }
+    .item {
+      counter-increment: item;
+      display: grid;
+      grid-template-columns: 120px 1fr auto;
+      gap: 28px;
+      align-items: start;
+      padding: 36px 0;
+      border-bottom: 1px solid var(--rule);
+      transition: background .2s ease;
+    }
+    .item:hover { background: linear-gradient(90deg, var(--nju-bronze-pale), transparent 70%); }
+    .item .num::before {
+      content: counter(item, decimal-leading-zero);
+      font-family: var(--font-display);
+      font-weight: 700;
+      font-size: 72px;
+      line-height: 0.9;
+      color: transparent;
+      -webkit-text-stroke: 1.5px var(--nju-bronze);
+      padding-left: 8px;
+    }
+    .item .tags { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 10px; }
+    .tag {
+      font-family: var(--font-sans-en); font-weight: 700;
+      font-size: 11px; letter-spacing: 0.22em; text-transform: uppercase;
+      padding: 3px 10px;
+      border: 1px solid var(--nju-bronze);
+      color: var(--nju-bronze-deep);
+    }
+    .tag.solid { background: var(--nju-bronze); color: var(--white); }
+    .item h3 { margin: 0; font-weight: 900; font-size: clamp(22px, 2.4vw, 30px); line-height: 1.3; }
+    .item h3 a:hover { color: var(--nju-bronze-deep); }
+    .item .en {
+      font-family: var(--font-display); font-style: italic;
+      font-size: 18px; color: var(--ink-muted); margin-top: 4px;
+    }
+    .item p { margin: 14px 0 0; max-width: 640px; color: var(--ink-soft); font-size: 16px; }
+    .item .keys {
+      margin-top: 12px;
+      font-size: 13.5px; color: var(--ink-muted);
+    }
+    .item .keys span + span::before { content: "·"; margin: 0 8px; color: var(--nju-bronze); }
+
+    .item .actions { display: flex; flex-direction: column; gap: 10px; padding-top: 6px; }
+    .btn {
+      display: inline-flex; align-items: center; justify-content: space-between; gap: 18px;
+      min-width: 150px;
+      padding: 10px 16px;
+      font-family: var(--font-sans-en); font-weight: 700;
+      font-size: 12px; letter-spacing: 0.2em; text-transform: uppercase;
+      border: 1px solid var(--ink);
+      transition: background .2s ease, color .2s ease, border-color .2s ease;
+    }
+    .btn::after { content: "\2192"; font-family: var(--font-display); letter-spacing: 0; font-size: 16px; }
+    .btn.primary { background: var(--ink); color: var(--paper); }
+    .btn.primary:hover { background: var(--nju-bronze-deep); border-color: var(--nju-bronze-deep); }
+    .btn.ghost:hover { border-color: var(--nju-bronze-deep); color: var(--nju-bronze-deep); }
+
+    /* ---------- Footer ---------- */
+    footer {
+      margin: 96px 0 0;
+      padding: 28px 0 40px;
+      border-top: 1px solid var(--rule);
+      display: flex; flex-wrap: wrap; justify-content: space-between; gap: 12px;
+      font-size: 13px; color: var(--ink-muted);
+    }
+    footer .mark {
+      font-family: var(--font-sans-en); font-weight: 700;
+      letter-spacing: 0.28em; text-transform: uppercase; color: var(--ink);
+    }
+    footer a { border-bottom: 1px solid var(--nju-bronze-light); }
+    footer a:hover { color: var(--nju-bronze-deep); }
+
+    /* ---------- Responsive ---------- */
+    @media (max-width: 760px) {
+      .wrap { padding: 0 16px; }
+      .masthead { margin-top: 16px; }
+      .masthead .bgword { opacity: 0.3; }
+      .item { grid-template-columns: 1fr; gap: 12px; padding: 28px 0; }
+      .item .num::before { font-size: 52px; padding-left: 0; }
+      .item .actions { flex-direction: row; flex-wrap: wrap; }
+      .btn { min-width: 0; }
+      .sec-head .count { font-size: 34px; }
+    }
+  </style>
+</head>
+<body>
+  <div class="wrap">
+
+    <header class="masthead">
+      <span class="corner tl"></span><span class="corner tr"></span>
+      <span class="corner bl"></span><span class="corner br"></span>
+      <div class="bgword" aria-hidden="true">AI4SE</div>
+      <div class="content">
+        <div class="eyebrow">AI for Software Engineering · 2026</div>
+        <h1>AI 赋能软件工程</h1>
+        <div class="sub">Lecture notes, slides and interactive explainers</div>
+        <div class="bronze-bar"></div>
+        <p class="lead">南京大学软件学院 AI4SE 课程的讲义与交互式材料，按发布顺序收录。</p>
+        <div class="meta">
+          <div><div class="k">Author</div><div class="v">邵栋</div></div>
+          <div><div class="k">Affiliation</div><div class="v">南京大学软件学院</div></div>
+          <div><div class="k">Source</div><div class="v"><a href="https://github.com/dongshao/AI4SE">github.com/dongshao/AI4SE</a></div></div>
+        </div>
+      </div>
+    </header>
+
+    <section id="materials">
+      <div class="sec-head">
+        <div>
+          <div class="eyebrow">Materials · 资料</div>
+          <h2>课程资料</h2>
+          <div class="en">Numbered automatically in order of appearance</div>
+        </div>
+        <div class="count" id="count" aria-label="资料数量"></div>
+      </div>
+
+      <div class="list">
+        <!--
+          新增资料：复制下面任意一个 <article class="item"> 块，改标题、描述与链接即可。
+          编号由 CSS counter 自动生成，右上角总数由页尾脚本自动统计。
+        -->
+
+        <article class="item">
+          <div class="num" aria-hidden="true"></div>
+          <div>
+            <div class="tags"><span class="tag solid">PDF</span><span class="tag">Slides</span><span class="tag">17 pp.</span></div>
+            <h3><a href="AgenticEngineering.pdf">Agentic Engineering：智能体工程</a></h3>
+            <div class="en">From vibe coding to trustworthy systems</div>
+            <p>比较手工编程、Vibe Coding 与 Agentic Engineering 三种模式，以 Naur 的「编程即理论构建」为线索，讨论原型与系统的差别、理解力负债，以及可信性要求如何决定编程方式的选择。</p>
+            <div class="keys"><span>三种编程模式</span><span>模型能力拐点</span><span>编程即理论</span><span>理解力负债</span><span>可信性决策</span></div>
+          </div>
+          <div class="actions">
+            <a class="btn primary" href="AgenticEngineering.pdf" target="_blank" rel="noopener">View</a>
+            <a class="btn ghost" href="AgenticEngineering.pdf" download>Download</a>
+          </div>
+        </article>
+
+        <article class="item">
+          <div class="num" aria-hidden="true"></div>
+          <div>
+            <div class="tags"><span class="tag solid">HTML</span><span class="tag">Interactive</span></div>
+            <h3><a href="agent-loop.html">Agent 的一生：一段伪代码看懂全过程</a></h3>
+            <div class="en">One loop to read them all</div>
+            <p>以一段 Agent 主循环伪代码为主线，分六步叠加 Harness：启动装配、while 主循环、退出收尾。LLM 只负责其中一行任务决策，其余均为工程。支持逐步展开、按层高亮与概念卡片跳转。</p>
+            <div class="keys"><span>Agent = LLM × Harness</span><span>Skill / MCP / Hooks</span><span>上下文工程</span><span>权限与沙箱</span></div>
+          </div>
+          <div class="actions">
+            <a class="btn primary" href="agent-loop.html">Open</a>
+          </div>
+        </article>
+
+      </div>
+    </section>
+
+    <footer>
+      <span class="mark">Nanjing University · 南京大学</span>
+      <span>© 2026 邵栋 · 许可见 <a href="https://github.com/dongshao/AI4SE/blob/main/LICENSE">LICENSE</a></span>
+    </footer>
+
+  </div>
+  <script>
+    document.getElementById('count').textContent =
+      String(document.querySelectorAll('.list .item').length).padStart(2, '0');
+  </script>
+</body>
+</html>
